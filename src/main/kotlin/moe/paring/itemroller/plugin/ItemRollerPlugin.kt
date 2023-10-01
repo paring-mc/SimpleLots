@@ -1,9 +1,7 @@
 package moe.paring.itemroller.plugin
 
 import io.github.monun.kommand.kommand
-import moe.paring.itemroller.command.create
-import moe.paring.itemroller.command.edit
-import moe.paring.itemroller.command.setItem
+import moe.paring.itemroller.command.*
 import moe.paring.itemroller.listener.InteractionListener
 import moe.paring.itemroller.persistence.RollerManager
 import moe.paring.itemroller.util.PERMISSION_PREFIX
@@ -40,6 +38,8 @@ class ItemRollerPlugin : JavaPlugin() {
                 edit()
                 setItem()
                 create()
+                delete()
+                config()
             }
         }
     }

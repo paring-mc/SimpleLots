@@ -1,6 +1,8 @@
 package moe.paring.itemroller.listener
 
 import moe.paring.itemroller.plugin.ItemRollerPlugin
+import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.minimessage.MiniMessage
 import org.bukkit.GameMode
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -22,6 +24,15 @@ class InteractionListener(private val plugin: ItemRollerPlugin) : Listener {
                 e.player.inventory.addItem(reward).values.forEach {
                     e.player.world.dropItemNaturally(e.player.location, it)
                 }
+                roller.claimEffectCommands.forEach {
+                    plugin.server.dispatchCommand(plugin.server.consoleSender, it.replace("%player%", e.player.name))
+                }
+                e.player.sendMessage(MiniMessage.miniMessage().deserialize(roller.rewardMessage)
+                    .replaceText {
+                        it.match("%item%").replacement(
+                            Component.translatable(reward.translationKey()).hoverEvent(reward.asHoverEvent())
+                        )
+                    })
             }
         }
     }
