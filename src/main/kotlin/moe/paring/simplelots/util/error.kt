@@ -1,4 +1,4 @@
-package moe.paring.itemroller.util
+package moe.paring.simplelots.util
 
 import io.github.monun.kommand.KommandContext
 import io.github.monun.kommand.KommandSource

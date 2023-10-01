@@ -1,4 +1,4 @@
-package moe.paring.itemroller.persistence
+package moe.paring.simplelots.persistence
 
 import org.bukkit.inventory.ItemStack
 

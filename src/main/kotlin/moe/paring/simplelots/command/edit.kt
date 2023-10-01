@@ -1,13 +1,13 @@
-package moe.paring.itemroller.command
+package moe.paring.simplelots.command
 
 import io.github.monun.invfx.InvFX
 import io.github.monun.invfx.openFrame
 import io.github.monun.kommand.getValue
 import io.github.monun.kommand.node.KommandNode
-import moe.paring.itemroller.persistence.RollableItem
-import moe.paring.itemroller.plugin.ItemRollerPlugin
-import moe.paring.itemroller.util.PERMISSION_PREFIX
-import moe.paring.itemroller.util.rollerArgument
+import moe.paring.simplelots.persistence.RollableItem
+import moe.paring.simplelots.plugin.SimpleLogsPlugin
+import moe.paring.simplelots.util.PERMISSION_PREFIX
+import moe.paring.simplelots.util.rollerArgument
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.Material
@@ -24,7 +24,7 @@ fun KommandNode.edit() {
             executes { context ->
                 val roller: RollableItem by context
 
-                val pl = ItemRollerPlugin.instance
+                val pl = SimpleLogsPlugin.instance
 
                 val items = roller.items.toMutableList()
                 var page = 0
@@ -151,7 +151,7 @@ fun KommandNode.edit() {
                             pl.persistence.save()
                             pl.persistence.reindex()
 
-                            broadcast(Component.text("Updated rewards of item roller ${roller.name}."))
+                            broadcast(Component.text("Updated rewards of lots ${roller.name}."))
                         }
                     }
 
@@ -163,7 +163,7 @@ fun KommandNode.edit() {
                             pl.persistence.save()
                             pl.persistence.reindex()
 
-                            broadcast(Component.text("Updated rewards of item roller ${roller.name}."))
+                            broadcast(Component.text("Updated rewards of lots ${roller.name}."))
                         }
                     }
                 }

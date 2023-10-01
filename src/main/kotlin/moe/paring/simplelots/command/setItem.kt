@@ -1,13 +1,13 @@
-package moe.paring.itemroller.command
+package moe.paring.simplelots.command
 
 import io.github.monun.kommand.getValue
 import io.github.monun.kommand.node.KommandNode
-import moe.paring.itemroller.persistence.RollableItem
-import moe.paring.itemroller.plugin.ItemRollerPlugin
-import moe.paring.itemroller.util.PERMISSION_PREFIX
-import moe.paring.itemroller.util.cmdRequire
-import moe.paring.itemroller.util.executesCatching
-import moe.paring.itemroller.util.rollerArgument
+import moe.paring.simplelots.persistence.RollableItem
+import moe.paring.simplelots.plugin.SimpleLogsPlugin
+import moe.paring.simplelots.util.PERMISSION_PREFIX
+import moe.paring.simplelots.util.cmdRequire
+import moe.paring.simplelots.util.executesCatching
+import moe.paring.simplelots.util.rollerArgument
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.TextDecoration
 import org.bukkit.Material
@@ -32,7 +32,7 @@ fun KommandNode.setItem() {
                     .hoverEvent(item.asHoverEvent())
                     .decoration(TextDecoration.ITALIC, true)
 
-                ItemRollerPlugin.instance.persistence.apply {
+                SimpleLogsPlugin.instance.persistence.apply {
                     save()
                     reindex()
                 }

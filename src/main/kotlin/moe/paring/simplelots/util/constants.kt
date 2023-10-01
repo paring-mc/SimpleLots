@@ -1,3 +1,3 @@
-package moe.paring.itemroller.util
+package moe.paring.simplelots.util
 
 const val PERMISSION_PREFIX = "itemroller"

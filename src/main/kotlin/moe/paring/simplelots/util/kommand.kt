@@ -1,13 +1,13 @@
-package moe.paring.itemroller.util
+package moe.paring.simplelots.util
 
 import io.github.monun.kommand.KommandArgument.Companion.dynamic
 import io.github.monun.kommand.StringType
-import moe.paring.itemroller.plugin.ItemRollerPlugin
+import moe.paring.simplelots.plugin.SimpleLogsPlugin
 
 val rollerArgument = dynamic(StringType.SINGLE_WORD) { _, input ->
-    ItemRollerPlugin.instance.persistence.items[input]
+    SimpleLogsPlugin.instance.persistence.items[input]
 }.apply {
     suggests {
-        suggest(ItemRollerPlugin.instance.persistence.items.keys)
+        suggest(SimpleLogsPlugin.instance.persistence.items.keys)
     }
 }

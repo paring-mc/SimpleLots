@@ -1,18 +1,18 @@
-package moe.paring.itemroller.command
+package moe.paring.simplelots.command
 
 import io.github.monun.kommand.StringType
 import io.github.monun.kommand.getValue
 import io.github.monun.kommand.node.KommandNode
-import moe.paring.itemroller.persistence.RollableItem
-import moe.paring.itemroller.plugin.ItemRollerPlugin
-import moe.paring.itemroller.util.rollerArgument
+import moe.paring.simplelots.persistence.RollableItem
+import moe.paring.simplelots.plugin.SimpleLogsPlugin
+import moe.paring.simplelots.util.rollerArgument
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.event.ClickEvent
 import net.kyori.adventure.text.event.HoverEvent
 import net.kyori.adventure.text.format.NamedTextColor
 
 fun KommandNode.config() {
-    val plugin = ItemRollerPlugin.instance
+    val plugin = SimpleLogsPlugin.instance
 
     "config" {
         then("roller" to rollerArgument) {

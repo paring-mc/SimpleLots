@@ -1,15 +1,15 @@
-package moe.paring.itemroller.plugin
+package moe.paring.simplelots.plugin
 
 import io.github.monun.kommand.kommand
-import moe.paring.itemroller.command.*
-import moe.paring.itemroller.listener.InteractionListener
-import moe.paring.itemroller.persistence.RollerManager
-import moe.paring.itemroller.util.PERMISSION_PREFIX
+import moe.paring.simplelots.command.*
+import moe.paring.simplelots.listener.InteractionListener
+import moe.paring.simplelots.persistence.RollerManager
+import moe.paring.simplelots.util.PERMISSION_PREFIX
 import org.bukkit.plugin.java.JavaPlugin
 
-class ItemRollerPlugin : JavaPlugin() {
+class SimpleLogsPlugin : JavaPlugin() {
     companion object {
-        lateinit var instance: ItemRollerPlugin
+        lateinit var instance: SimpleLogsPlugin
     }
 
     lateinit var persistence: RollerManager
@@ -32,7 +32,7 @@ class ItemRollerPlugin : JavaPlugin() {
 
     private fun registerCommands() {
         kommand {
-            register("itemroller", "ir") {
+            register("lots") {
                 requires { isPlayer && hasPermission("$PERMISSION_PREFIX.command") }
 
                 edit()

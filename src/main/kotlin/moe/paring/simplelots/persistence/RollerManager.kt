@@ -1,7 +1,6 @@
-package moe.paring.itemroller.persistence
+package moe.paring.simplelots.persistence
 
-import moe.paring.itemroller.plugin.ItemRollerPlugin
-import moe.paring.itemroller.util.cmdRequire
+import moe.paring.simplelots.util.cmdRequire
 import net.kyori.adventure.text.Component
 import org.bukkit.Material
 import org.bukkit.configuration.file.YamlConfiguration
@@ -15,7 +14,7 @@ class RollerManager(private val file: File) {
     var rollerByItemStack = mapOf<Material, List<RollableItem>>()
 
     fun create(name: String): RollableItem {
-        cmdRequire(!items.containsKey(name)) { Component.text("Item roller already exists") }
+        cmdRequire(!items.containsKey(name)) { Component.text("lots already exists") }
 
         val roller = RollableItem(name)
 
