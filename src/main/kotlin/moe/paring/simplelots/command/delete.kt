@@ -15,6 +15,7 @@ fun KommandNode.delete() {
         then("roller" to rollerArgument) {
             executes { context ->
                 val roller: RollableItem by context
+                val rollerName = roller.name
 
                 val plugin = LotsPlugin.instance
 
@@ -24,7 +25,7 @@ fun KommandNode.delete() {
                     reindex()
                 }
 
-                broadcast(Component.text("Deleted lots ${roller.name}"))
+                broadcast(Component.text("Deleted lots $rollerName"))
             }
         }
     }
