@@ -27,6 +27,8 @@ fun KommandNode.config() {
                                     .clickEvent(ClickEvent.copyToClipboard(roller.claimEffectCommands.joinToString(";;;")))
                                     .color(NamedTextColor.GRAY)
                             )
+                            .appendNewline()
+                            .append(Component.text("If you want to remove this value, Please use _reset"))
                     )
                 }
 
@@ -35,7 +37,11 @@ fun KommandNode.config() {
                         val roller: RollableItem by context
                         val value: String by context
 
-                        roller.claimEffectCommands = value.split(";;;")
+                        if (value == "_reset") {
+                            roller.claimEffectCommands = listOf()
+                        } else {
+                            roller.claimEffectCommands = value.split(";;;")
+                        }
 
                         plugin.persistence.save()
                         broadcast(Component.text("Changed effect command of ${roller.name}"))

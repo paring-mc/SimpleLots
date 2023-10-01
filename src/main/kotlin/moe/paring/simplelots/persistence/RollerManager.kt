@@ -44,6 +44,7 @@ class RollerManager(private val file: File) {
             roller.items = items.map { (it as ItemStack).clone() }
 
             roller.claimEffectCommands = (map["claimEffectCommands"] as List<*>? ?: listOf<String>()).map { it as String }
+            (map["rewardMessage"] as String?)?.let { roller.rewardMessage = it }
 
             this@RollerManager.items[roller.name] = roller
         }
@@ -57,7 +58,8 @@ class RollerManager(private val file: File) {
                 "name" to it.name,
                 "rollerItem" to it.rollerItem,
                 "rewards" to it.items,
-                "claimEffectCommands" to it.claimEffectCommands
+                "claimEffectCommands" to it.claimEffectCommands,
+                "rewardMessage" to it.rewardMessage
             )
         })
 

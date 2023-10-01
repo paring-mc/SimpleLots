@@ -30,7 +30,7 @@ class InteractionListener(private val plugin: LotsPlugin) : Listener {
                 e.player.sendMessage(MiniMessage.miniMessage().deserialize(roller.rewardMessage)
                     .replaceText {
                         it.match("%item%").replacement(
-                            Component.translatable(reward.translationKey()).hoverEvent(reward.asHoverEvent())
+                            (reward.itemMeta.displayName() ?: Component.translatable(reward.translationKey())).hoverEvent(reward.asHoverEvent())
                         )
                     })
             }
