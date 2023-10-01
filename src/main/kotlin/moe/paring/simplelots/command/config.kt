@@ -4,7 +4,7 @@ import io.github.monun.kommand.StringType
 import io.github.monun.kommand.getValue
 import io.github.monun.kommand.node.KommandNode
 import moe.paring.simplelots.persistence.RollableItem
-import moe.paring.simplelots.plugin.SimpleLogsPlugin
+import moe.paring.simplelots.plugin.LotsPlugin
 import moe.paring.simplelots.util.rollerArgument
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.event.ClickEvent
@@ -12,7 +12,7 @@ import net.kyori.adventure.text.event.HoverEvent
 import net.kyori.adventure.text.format.NamedTextColor
 
 fun KommandNode.config() {
-    val plugin = SimpleLogsPlugin.instance
+    val plugin = LotsPlugin.instance
 
     "config" {
         then("roller" to rollerArgument) {

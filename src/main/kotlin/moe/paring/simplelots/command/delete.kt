@@ -3,7 +3,7 @@ package moe.paring.simplelots.command
 import io.github.monun.kommand.getValue
 import io.github.monun.kommand.node.KommandNode
 import moe.paring.simplelots.persistence.RollableItem
-import moe.paring.simplelots.plugin.SimpleLogsPlugin
+import moe.paring.simplelots.plugin.LotsPlugin
 import moe.paring.simplelots.util.PERMISSION_PREFIX
 import moe.paring.simplelots.util.rollerArgument
 import net.kyori.adventure.text.Component
@@ -16,7 +16,7 @@ fun KommandNode.delete() {
             executes { context ->
                 val roller: RollableItem by context
 
-                val plugin = SimpleLogsPlugin.instance
+                val plugin = LotsPlugin.instance
 
                 plugin.persistence.apply {
                     items.remove(roller.name)

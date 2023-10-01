@@ -5,7 +5,7 @@ import io.github.monun.invfx.openFrame
 import io.github.monun.kommand.getValue
 import io.github.monun.kommand.node.KommandNode
 import moe.paring.simplelots.persistence.RollableItem
-import moe.paring.simplelots.plugin.SimpleLogsPlugin
+import moe.paring.simplelots.plugin.LotsPlugin
 import moe.paring.simplelots.util.PERMISSION_PREFIX
 import moe.paring.simplelots.util.rollerArgument
 import net.kyori.adventure.text.Component
@@ -24,7 +24,7 @@ fun KommandNode.edit() {
             executes { context ->
                 val roller: RollableItem by context
 
-                val pl = SimpleLogsPlugin.instance
+                val pl = LotsPlugin.instance
 
                 val items = roller.items.toMutableList()
                 var page = 0

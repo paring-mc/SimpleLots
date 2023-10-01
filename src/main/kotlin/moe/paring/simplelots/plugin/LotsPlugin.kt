@@ -7,9 +7,9 @@ import moe.paring.simplelots.persistence.RollerManager
 import moe.paring.simplelots.util.PERMISSION_PREFIX
 import org.bukkit.plugin.java.JavaPlugin
 
-class SimpleLogsPlugin : JavaPlugin() {
+class LotsPlugin : JavaPlugin() {
     companion object {
-        lateinit var instance: SimpleLogsPlugin
+        lateinit var instance: LotsPlugin
     }
 
     lateinit var persistence: RollerManager
