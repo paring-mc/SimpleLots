@@ -3,6 +3,7 @@ package moe.paring.simplelots.listener
 import moe.paring.simplelots.plugin.LotsPlugin
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.minimessage.MiniMessage
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import org.bukkit.GameMode
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -27,10 +28,18 @@ class InteractionListener(private val plugin: LotsPlugin) : Listener {
                 roller.claimEffectCommands.forEach {
                     plugin.server.dispatchCommand(plugin.server.consoleSender, it.replace("%player%", e.player.name))
                 }
-                e.player.sendMessage(MiniMessage.miniMessage().deserialize(roller.rewardMessage)
+                e.player.sendMessage((
+                        runCatching { MiniMessage.miniMessage().deserialize(roller.rewardMessage) }.getOrNull()
+                            ?: LegacyComponentSerializer.legacyAmpersand()
+                                .deserialize(roller.rewardMessage.replace("\\n", "\n")))
                     .replaceText {
                         it.match("%item%").replacement(
-                            (reward.itemMeta.displayName() ?: Component.translatable(reward.translationKey())).hoverEvent(reward.asHoverEvent())
+                            (reward.itemMeta.displayName()
+                                ?: Component.translatable(reward.translationKey())).hoverEvent(reward.asHoverEvent())
+                        )
+                    }.replaceText {
+                        it.match("%amount%").replacement(
+                            reward.amount.toString()
                         )
                     })
             }
