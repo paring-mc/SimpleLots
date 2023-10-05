@@ -1,6 +1,8 @@
 package moe.paring.simplelots.plugin
 
 import io.github.monun.kommand.kommand
+import io.github.monun.tap.util.UpToDateException
+import io.github.monun.tap.util.updateFromGitHub
 import moe.paring.simplelots.command.*
 import moe.paring.simplelots.listener.InteractionListener
 import moe.paring.simplelots.persistence.RollerManager
@@ -16,6 +18,18 @@ class LotsPlugin : JavaPlugin() {
 
     override fun onEnable() {
         instance = this
+
+        logger.info("Checking for updates...")
+        updateFromGitHub("pikokr", "SimpleLots", "SimpleLots.jar") {
+            onSuccess { logger.info("Update available! Download at https://github.com$it") }
+                .onFailure {
+                    if (it is UpToDateException) {
+                        logger.info("Already up to date.")
+                        return@onFailure
+                    }
+                    logger.info("Failed to check update: $it")
+                }
+        }
 
         persistence = RollerManager(
             dataFolder.resolve("data.yml")

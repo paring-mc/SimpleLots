@@ -25,6 +25,7 @@ dependencies {
     implementation(kotlin("reflect"))
 
     implementation("io.github.monun:kommand-api:3.1.7")
+    implementation("io.github.monun:tap-api:4.9.3")
     implementation("io.github.monun:invfx-api:3.3.2")
 
     paperweight.paperDevBundle(libs.versions.paper)
